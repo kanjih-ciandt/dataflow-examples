@@ -101,10 +101,10 @@ public class PubSub2DatastoreV2 {
             Map<String, Object> message = (Map<String, Object>) map.get("message");
             LOG.info("body:" + message);
 
-            msg.setCreateDateTime((String) meta.get("X-KOHLS-CreateDateTime"));
-            msg.setMessageType((String) meta.get("X-KOHLS-MessageType"));
-            msg.setFromApp((String) meta.get("X-KOHLS-From-App"));
-            msg.setCorrelationId((String) meta.get("X-KOHLS-CorrelationID"));
+            msg.setCreateDateTime((String) meta.get("X-KANJIH-CreateDateTime"));
+            msg.setMessageType((String) meta.get("X-KANJIH-MessageType"));
+            msg.setFromApp((String) meta.get("X-KANJIH-From-App"));
+            msg.setCorrelationId((String) meta.get("X-KANJIH-CorrelationID"));
 
             msg.setStoreId((String) message.get("storeId"));
             msg.setItemId((String) message.get("itemId"));
@@ -160,10 +160,10 @@ public class PubSub2DatastoreV2 {
             Key.Builder keyBuilder = DatastoreHelper.makeKey(kind, key);
             entityBuilder.setKey(keyBuilder.build());
             
-            putProperty(entityBuilder, "X-KOHLS-CreateDateTime", msg.getCreateDateTime(), false);
-            putProperty(entityBuilder, "X-KOHLS-MessageType", msg.getMessageType(), false);
-            putProperty(entityBuilder, "X-KOHLS-From-App", msg.getFromApp(), false);
-            putProperty(entityBuilder, "X-KOHLS-CorrelationID", msg.getCorrelationId(), false);
+            putProperty(entityBuilder, "X-KANJIH-CreateDateTime", msg.getCreateDateTime(), false);
+            putProperty(entityBuilder, "X-KANJIH-MessageType", msg.getMessageType(), false);
+            putProperty(entityBuilder, "X-KANJIH-From-App", msg.getFromApp(), false);
+            putProperty(entityBuilder, "X-KANJIH-CorrelationID", msg.getCorrelationId(), false);
             putProperty(entityBuilder, "storeId", msg.getStoreId(), false);
             putProperty(entityBuilder, "itemId", msg.getItemId(), false);
             putProperty(entityBuilder, "stockRoom", msg.getStockRoom(), false);
